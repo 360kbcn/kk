@@ -1,0 +1,18 @@
+ 
+2	Reducció d’un repositori
+Per reduir la mida d’un repositori podem fer 2 accions:
+1.	Eliminar històric
+2.	Eliminar parts del repositori
+En aquest apartat s’explica com reduir un repositori utilitzant els 2 mètodes.
+2.1	Eliminació d’històric
+Per eliminar l’històric, només cal fer un clone del repositori indicant una profunditat:
+git --no-optional-locks clone --no-hardlinks --branch master --depth <depth> <repositori> <path_desti>
+
+Amb això haurem creat una còpia del repositori, eliminant els commits posterior al número <depth+1> començant per l’últim que s’ha fet.
+Si volem podem fer un Push del projecte a un nou repositori per eliminar definitivament els commits de l’històric.
+2.2	Eliminació d’un fitxer o carpeta
+Per eliminar un fitxer o carpeta, incloent l’històric de commits, cal executar la següent comanda des del path del repositori local:
+git filter-branch --tree-filter 'rm –f[r] <fitxer o carpeta>' -- --all
+
+Consolidarem la modificació amb un Push del projecte.
+
